@@ -1,0 +1,135 @@
+﻿<UserControl x:Class="ProyectoAutos1.Views.VentasView.VentasView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ProyectoAutos1.Views.VentasView"
+             mc:Ignorable="d" 
+             x:Name="verVentas"
+             d:DesignHeight="450" d:DesignWidth="800">
+
+
+
+    <DockPanel Background="#4B4643">
+
+        <Border DockPanel.Dock="Left" Background="#227C70" Width="120" Height="442"
+                CornerRadius="0,20,20,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+
+            <StackPanel Margin="18,140,18,0">
+
+                <Button Background="Transparent"   BorderThickness="0" Command="{Binding VerRegistrarVentaCommand}">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Visibility" Value="Visible"></Setter>
+                                </Trigger>
+                                
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    
+                    <Image Source="\Assets\editar.png"></Image>
+                </Button>
+
+                <TextBlock Margin="0,15,0,0" HorizontalAlignment="Center" FontWeight="DemiBold" FontSize="20">Registrar<LineBreak></LineBreak> venta</TextBlock>
+                
+            </StackPanel>
+            
+            
+        </Border>
+
+        <WrapPanel DockPanel.Dock="Top" HorizontalAlignment="Center" Margin="0,7,0,0">
+
+            <TextBlock Foreground="White"
+                       FontSize="25"
+                       Margin="40,0,20,0">Modelo:
+            </TextBlock>
+
+            <ComboBox HorizontalAlignment="Center"
+                      Width="410"
+                      ItemsSource="{Binding ListaAutos}"
+                      SelectedItem="{Binding auto}"
+                      
+                      SelectedValuePath="Id"
+                      DisplayMemberPath="Modelo"
+                      SelectionChanged="ComboBox_SelectionChanged"
+                      >
+                
+            </ComboBox>
+            
+        </WrapPanel>
+
+        <ScrollViewer>
+
+            <ItemsControl ItemsSource="{Binding ListaVentas}">
+
+                <ItemsControl.ItemTemplate>
+
+                    <DataTemplate>
+
+                        <Border Background="Yellow" 
+                                CornerRadius="5"
+                                BorderThickness="1"
+                                Margin="5"
+                                Padding="10"
+                                >
+                            <StackPanel>
+                                <Button HorizontalAlignment="Right" Background="Transparent" BorderThickness="0"
+                                        Command="{Binding Source={x:Reference verVentas},
+                                    Path=DataContext.VerEliminarVentaCommand}"
+                                        CommandParameter="{Binding Idventa}"
+                                        >
+                                    <Image Source="\Assets\cerrar (1).png" Width="20"></Image>
+                                </Button>
+
+
+                                <WrapPanel Margin="2">
+                                    <Image Source="\Assets\usuario.png" Width="20"></Image>
+                                    <TextBlock Margin="3,0,0,0" FontSize="15" Text="{Binding NombreComprador}"></TextBlock>
+                                </WrapPanel>
+
+
+                                <WrapPanel Margin="2">
+                                    <Image Source="\Assets\gps.png" Width="20"></Image>
+                                    <TextBlock FontSize="15" VerticalAlignment="Center" Text="{Binding DireccionComprador}"></TextBlock>
+                                </WrapPanel>
+
+                                <WrapPanel Margin="2">
+                                    <Image Source="\Assets\ring-phone.png" Width="20"></Image>
+                                    <TextBlock FontSize="15" VerticalAlignment="Center" Text="{Binding Telefono}"></TextBlock>
+                                </WrapPanel>
+
+                                <TextBlock Margin="2" FontSize="15" Text="{Binding Ocupacion}"></TextBlock>
+
+                                <WrapPanel Margin="2">
+                                    <Image Source="\Assets\dinero.png" Width="20"></Image>
+                                    <TextBlock FontSize="15" Text="{Binding TipoPago}"></TextBlock>
+                                </WrapPanel>
+
+                                <WrapPanel Margin="2">
+                                    <Image Source="\Assets\time-and-calendar.png" Width="20"></Image>
+                                    <TextBlock FontSize="15" Text="{Binding FechaCompra, StringFormat='M/d/yyyy'}"></TextBlock>
+                                </WrapPanel>
+                               
+
+                            </StackPanel>
+                            
+                            
+                        </Border>
+                        
+                    </DataTemplate>
+                    
+                </ItemsControl.ItemTemplate>
+                
+            </ItemsControl>
+            
+        </ScrollViewer>
+        
+        
+    </DockPanel>
+    
+    
+    
+    
+</UserControl>

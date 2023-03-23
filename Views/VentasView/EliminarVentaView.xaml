@@ -1,0 +1,72 @@
+﻿<UserControl x:Class="ProyectoAutos1.Views.VentasView.EliminarVentaView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ProyectoAutos1.Views.VentasView"
+             mc:Ignorable="d" 
+             d:DesignHeight="450"
+             d:DesignWidth="800"
+             Background="#70000000"
+             >
+
+
+
+    <Border Background="#7DB9B6" Margin="30" CornerRadius="10">
+
+        <DockPanel Margin="10,50,10,10">
+
+            <TextBlock HorizontalAlignment="Center"
+                       FontSize="25" FontWeight="Bold"
+                       DockPanel.Dock="Top"
+                       Margin="0,40,0,0"
+                      
+                       
+                       >Eliminar venta</TextBlock>
+
+
+            <StackPanel>
+
+                <!--<TextBlock HorizontalAlignment="Center"
+                           Margin="0,50,0,0"
+                           FontWeight="DemiBold"
+                           FontSize="20"
+                           >Desea eliminar la venta seleccionado?</TextBlock>-->
+
+
+                <TextBlock HorizontalAlignment="Center"
+                            Margin="10,50,10,10"
+                           FontWeight="DemiBold"
+                           FontSize="20"
+                           TextWrapping="Wrap"
+                           Text="{Binding venta.MensajeEliminarVenta}"
+                           ></TextBlock>
+
+
+                <WrapPanel HorizontalAlignment="Center" Margin="0,30,0,0">
+
+                    <Border Margin="0,0,30,0" Background="#4B4643" Height="40" CornerRadius="10" Width="110"
+                            
+                            >
+                        <Button Background="Transparent" Command="{Binding EliminarVentaCommand}" 
+                                
+                                Foreground="White" FontSize="15" BorderThickness="0" FontWeight="Bold">Sí</Button>
+                    </Border>
+
+                    <Border Background="#4B4643" Height="40" CornerRadius="10" Width="110">
+                        <Button Command="{Binding RegresarCommand}"  FontSize="15"  Background="Transparent" Foreground="White" BorderThickness="0" FontWeight="Bold">No</Button>
+                    </Border>
+
+                </WrapPanel>
+
+
+            </StackPanel>
+
+
+        </DockPanel>
+        
+    </Border>
+    
+    
+    
+</UserControl>

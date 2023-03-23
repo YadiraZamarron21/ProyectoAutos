@@ -1,0 +1,118 @@
+﻿<Window x:Class="ProyectoAutos1.Views.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProyectoAutos1.Views"
+        xmlns:vm="clr-namespace:ProyectoAutos1.ViewModels"
+        mc:Ignorable="d"
+        Background="White"
+        Title="MainView"
+        Height="550"
+        Width="980"
+        WindowStyle="None"
+        AllowsTransparency="True" 
+        WindowStartupLocation="CenterScreen"
+        MouseDown="Window_MouseDown"
+        >
+
+
+    <Window.DataContext>
+        <vm:MainViewModel></vm:MainViewModel>
+    </Window.DataContext>
+
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type vm:VehiculosViewModel}">
+            <local:IndexVehiculosView></local:IndexVehiculosView>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:VentasViewModel}">
+            <local:IndexVentasView></local:IndexVentasView>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:EstadisticasViewModel}">
+            <local:IndexEstadisticasView></local:IndexEstadisticasView>
+        </DataTemplate>
+    </Window.Resources>
+
+    <Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width=".2*"></ColumnDefinition>
+                <ColumnDefinition Width=".8*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+
+            <Border CornerRadius="5" Background="#4B4643" BorderBrush="White" Margin="5">
+                <Grid Background="#4B4643">
+                <Grid.Effect>
+                    <DropShadowEffect ShadowDepth="10" BlurRadius="50"></DropShadowEffect>
+                </Grid.Effect>
+            </Grid>
+            </Border>
+
+            <Grid Margin="30">
+                <Border Background="yellow" CornerRadius="20" BorderBrush="White" BorderThickness="2">
+                    <StackPanel>
+                        <StackPanel>
+                            <Button Command="{Binding NavegarAutosCommand}" Background="Transparent" Margin="10,10,10,0" BorderThickness="0">
+                                <Image Source="\Assets\car-wheel.png" Width="70"></Image>
+                            </Button>
+                            <TextBlock FontWeight="Bold" FontSize="20" HorizontalAlignment="Center">Vehículos</TextBlock>
+
+                        </StackPanel>
+
+                        <StackPanel>
+                            <Button Command="{Binding NavegarVentasCommand}" Background="Transparent" Margin="5,50,5,0" BorderThickness="0" Height="80">
+                                <Image Source="\Assets\contrato.png" Width="70"></Image>
+                            </Button>
+                            <TextBlock FontWeight="Bold" FontSize="20" HorizontalAlignment="Center">Ventas</TextBlock>
+                        </StackPanel>
+
+                        <StackPanel>
+                            <Button  Background="Transparent" Margin="5,50,5,0" BorderThickness="0" Height="80"
+                                     Command="{Binding NavegarEstadisticasCommand}"
+                                     >
+                                <Image Source="\Assets\estadistica.png" Width="70"></Image>
+                            </Button>
+                            <TextBlock FontWeight="Bold" FontSize="20" HorizontalAlignment="Center">Estadísticas</TextBlock>
+                        </StackPanel>
+
+                    </StackPanel>
+
+                </Border>
+            </Grid>
+
+
+          
+
+            <Grid Grid.Column="1" Background="#4B4643">
+
+             
+
+                <DockPanel>
+                    <Button DockPanel.Dock="Top" Height="30" Width="40"
+                            Background="Transparent" BorderThickness="1"
+                            BorderBrush="White"
+                            HorizontalAlignment="Right" Margin="0,8,8,0"
+                            Click="Button_Click"
+                            >
+                        <Image Source="\Assets\cerrar.png"></Image>
+                    </Button>
+                    
+                    
+                    <UserControl Grid.Column="1"
+                                 Content="{Binding ViewModelActual}"></UserControl>
+                </DockPanel>
+                
+            </Grid>
+
+        </Grid>
+
+        
+        
+
+
+
+    </Grid>
+
+
+</Window>

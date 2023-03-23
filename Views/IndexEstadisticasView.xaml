@@ -1,0 +1,126 @@
+﻿<UserControl x:Class="ProyectoAutos1.Views.IndexEstadisticasView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ProyectoAutos1.Views"
+             xmlns:views="clr-namespace:ProyectoAutos1.Views.EstadisticasView"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+
+        <views:VerAñoVehiculoView x:Key="verañovehiculo"></views:VerAñoVehiculoView>
+        <views:VerVehiculosXMarcaView x:Key="vervehiculosxmarca"></views:VerVehiculosXMarcaView>
+        <views:VerVehiculosGasolina x:Key="vervehiculosgasolina"></views:VerVehiculosGasolina>
+        <views:VerVehiculosDiesel x:Key="vervehiculosdiesel"></views:VerVehiculosDiesel>
+        <views:VerVehiculoHibrido x:Key="vervehiculoshibrido"></views:VerVehiculoHibrido>
+        <views:VerVentasXTipoPagoView x:Key="verventastipopago"></views:VerVentasXTipoPagoView>
+        
+    </UserControl.Resources>
+    
+
+
+    <DockPanel  Background="#4B4643">
+
+        <Border DockPanel.Dock="Left" Background="#0F6292" Width="120" Height="442"
+                CornerRadius="0,20,20,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+
+            <StackPanel Margin="5">
+
+                <Button BorderThickness="0" Background="Transparent" Margin="0,5,0,0"
+                        Command="{Binding VerAñoVehiculoCommand}"
+                        >
+                    <Image Source="\Assets\calendar.png" Width="40"></Image>
+                </Button>
+
+                <Button BorderThickness="0" Background="Transparent" Margin="0,15,0,0"
+                        Command="{Binding VerEstadisticasMarcaCommand}"
+                        >
+                    <Image Source="\Assets\sign.png" Width="40"></Image>
+                </Button>
+
+                <Button Margin="0,30,0,0" BorderThickness="0" Background="Transparent"
+                        Command="{Binding VerVehiculosGasolinaCommand}"
+                        >
+                    <Image Source="\Assets\gasoline-pump.png" Width="40"></Image>
+                </Button>
+                <TextBlock HorizontalAlignment="Center" FontWeight="DemiBold" Foreground="white">Gasolina</TextBlock>
+
+                <Button Margin="0,30,0,0" BorderThickness="0" Background="Transparent"
+                        Command="{Binding VerVehiculosDieselCommand}"
+                        >
+                    <Image Source="\Assets\oil-barrel.png" Width="40"></Image>
+                </Button>
+                <TextBlock HorizontalAlignment="Center" FontWeight="DemiBold" Foreground="white">Diesel</TextBlock>
+
+
+                <Button Margin="0,30,0,0" BorderThickness="0" Background="Transparent"
+                        Command="{Binding VerVehiculosHibridoCommand}"
+                        >
+                    <Image Source="\Assets\hybrid.png" Width="40"></Image>
+                </Button>
+                <TextBlock HorizontalAlignment="Center" FontWeight="DemiBold" Foreground="white">Hibridos</TextBlock>
+
+
+                <Button Margin="0,30,0,0" BorderThickness="0" Background="Transparent"
+                        Command="{Binding VerVentasXTipoPagoCommand}"
+                        >
+                    <Image Source="\Assets\tarjeta-de-debito.png" Width="40"></Image>
+                </Button>
+
+
+            </StackPanel>
+
+          
+        </Border>
+
+
+        <ContentControl DockPanel.Dock="Right">
+
+            <ContentControl.Style>
+                <Style TargetType="ContentControl">
+                    <!--<Setter Property="Content" Value="{StaticResource verañovehiculo}"></Setter>-->
+
+
+                    <Style.Triggers>
+
+                        <DataTrigger Binding="{Binding Operacion}" Value="{x:Static local:Accion.VerAñoVehiculo}">
+                            <Setter Property="Content" Value="{StaticResource verañovehiculo}"></Setter>
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding Operacion}" Value="{x:Static local:Accion.VerVehiculosXMarca}">
+                            <Setter Property="Content" Value="{StaticResource vervehiculosxmarca}"></Setter>
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding Operacion}" Value="{x:Static local:Accion.VerVehiculosGasolina}">
+                            <Setter Property="Content" Value="{StaticResource vervehiculosgasolina}"></Setter>
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding Operacion}" Value="{x:Static local:Accion.VerVehiculosDiesel}">
+                            <Setter Property="Content" Value="{StaticResource vervehiculosdiesel}"></Setter> 
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding Operacion}" Value="{x:Static local:Accion.VerVehiculosHibrido}">
+                            <Setter Property="Content" Value="{StaticResource vervehiculoshibrido}"></Setter>
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding Operacion}" Value="{x:Static local:Accion.VerVentasxTipoPago}">
+                            <Setter Property="Content" Value="{StaticResource verventastipopago}"></Setter>
+                        </DataTrigger>
+
+
+                    </Style.Triggers>
+                    
+                </Style>
+            </ContentControl.Style>
+            
+        </ContentControl>
+        
+        
+        
+    </DockPanel>
+    
+    
+    
+</UserControl>
